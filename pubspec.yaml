@@ -1,8 +1,8 @@
 name: flutter_img_resolution_organizer
-description: A new Flutter package project.
+description: A Flutter package that organizes image's resolution variants inside your asset's folder.
 version: 0.0.1
-author:
-homepage:
+author: Parinthorn Saithong
+homepage: https://github.com/pirsquareff/flutter_img_resolution_organizer
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  yaml: ^2.1.15
+  path: ^1.6.2
 
 dev_dependencies:
   flutter_test:
