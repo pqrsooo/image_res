@@ -6,7 +6,8 @@ void main(List<String> args) {
   const configPath = 'firconfig.yaml';
   if (FileSystemEntity.typeSync(configPath) == FileSystemEntityType.notFound) {
     // `firconfig.yaml` does not exist
-    print('`firconfig.yaml` does not exist. Please consult https://github.com/pirsquareff for more information regarding the configuration.');
+    print(Platform.script.path);
+    print('There is no `firconfig.yaml` in your project\'s root directory. Please consult https://github.com/pirsquareff/flutter_img_resolution_organizer for more information regarding the configuration.');
     exit(2);
   }
 
