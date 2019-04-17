@@ -57,14 +57,14 @@ assets/
     #       - [start_token]: A token that indicates a starting point of the resolution's part.
     #       - [end_token]: A token that indicates an ending point of the resolution's part.
     #
-    # Valid `resolution_indicator`s along with example filenames that it can detect are shown below.
+    # Valid `resolution_indicator`s along with example filenames that they can detect are shown below.
     #   '@{N}x': logo@2x.png, logo@2.0x.png, @2.0xlogo.png
     #   '--{N}#': logo--2#.png, logo--2.0#.png, --2.0#logo.png
     resolution_indicator: '@{N}x'
 
     ```
 3. Run the plugin in the project's root directory. See [Available CLI Commands](#available-cli-commands)
-    ```
+    ```sh
     flutter packages pub run image_res:main <command>
     ```
 
@@ -82,10 +82,10 @@ If you encounter an issue indicating `dart: command not found`, please install D
 
 ### Usage
 - If the plugin was installed globally, run it by:
-    ```
+    ```sh
     imgres <command>
     ```
 - If the plugin was installed locally in a Flutter project, run it by:
-    ```
+    ```sh
     flutter packages pub run image_res:main <command>
     ```
