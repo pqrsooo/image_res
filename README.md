@@ -38,7 +38,7 @@ asset/
 1. Install the `image_res` plugin by adding it in `pubspec.yaml` under `dev_dependencies` section and run `flutter packages get`
     ```yaml
     dev_dependencies: 
-    image_res: ^0.1.0
+        image_res: ^0.1.0
     ```
 2. Create a new configuration file called `image_res.yaml`
     ```yaml
@@ -67,6 +67,6 @@ asset/
     flutter packages pub run image_res:main
     ```
 
-**Note that** this plugin can be installed globally by `flutter pub global activate image_res`. Instead of typing a long command shown above, you can run it by just `imgres`.
+**Note that** this plugin can be installed globally by `flutter packages pub global activate image_res`. Instead of typing a long command shown above, you can run it by just `imgres`.
 
 If you encounters an issue indicating `dart: command not found`, please install Dart separately first and try running again.
