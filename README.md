@@ -5,7 +5,7 @@ A command-line tool which simplifies the task of placing the image's files into 
 For example, if you place images in the asset folder as shown below: 
 
 ```
-asset/
+assets/
 +-- images/
 |   +-- icons/
 |   |   +-- search.png
@@ -19,7 +19,7 @@ asset/
 After running this plugin (with a configuration file in the project's root directory), the images whose filename includes a resolution indicator will be moved as follows:
 
 ```
-asset/
+assets/
 +-- images/
 |   +-- 2.0x/
 |   |   +-- logo.png
@@ -38,9 +38,9 @@ asset/
 1. Install the `image_res` plugin by adding it in `pubspec.yaml` under `dev_dependencies` section and run `flutter packages get`
     ```yaml
     dev_dependencies: 
-        image_res: ^0.0.5
+        image_res: ^0.1.0
     ```
-2. Create a new configuration file called `image_res.yaml` in the project's root directory.
+2. Create a new configuration file called `image_res.yaml` in the project's root directory
     ```yaml
     # The organizer recursively looks into all files in the `asset_folder_path`. (relative to the project's root)
     asset_folder_path: assets/images/
@@ -62,11 +62,18 @@ asset/
     resolution_indicator: '@{N}x'
 
     ```
-3. Run the plugin in the project's root directory
+3. Run the plugin in the project's root directory. See [Available CLI Commands](#available-cli-commands)
     ```
-    flutter packages pub run image_res:main
+    flutter packages pub run image_res:main <command>
     ```
 
 **Note that** this plugin can be installed globally by `flutter packages pub global activate image_res`. Instead of typing a long command shown above, you can run it by just `imgres`.
 
 If you encounters an issue indicating `dart: command not found`, please install Dart separately first and try running again.
+
+## Available CLI Commands
+| Commands | Description |
+| -------- | ----------- |
+| `[blank]` | Run this plugin once |
+| `run` | Run this plugin once |
+| `watch` | Run this plugin and watch for changes |

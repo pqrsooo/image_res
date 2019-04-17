@@ -1,3 +1,6 @@
+## 0.1.0 (17 April 2019)
+- Now this plugin can watch for file changes
+
 ## 0.0.5 (17 April 2019)
 - Edit `README.md`
 

@@ -2,7 +2,8 @@ library image_res;
 
 import 'dart:io';
 import 'dart:core';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as p;
+import 'package:watcher/watcher.dart';
 
 import 'src/config.dart';
 
@@ -10,12 +11,29 @@ class FlutterImgResolutionOrganizer {
   /// A configulation instance
   Config config;
 
-  /// A main constructor
-  FlutterImgResolutionOrganizer(String configPath) {
+  /// A main constructor with a default configuration
+  FlutterImgResolutionOrganizer() {
+    config = Config();
+  }
+
+  /// A named constructor that creates an instance with a config
+  FlutterImgResolutionOrganizer.withConfig(
+      {var assetFolderPath = DefaultConfig.ASSET_FOLDER_PATH,
+      var fileExtensions = DefaultConfig.FILE_EXTENSIONS,
+      var resolutionIndicator = DefaultConfig.RESOLUTION_INDICATOR}) {
+    config = Config(
+      assetFolderPath: assetFolderPath,
+      fileExtensions: fileExtensions,
+      resolutionIndicator: resolutionIndicator,
+    );
+  }
+
+  /// A named constructor that creates an instance with a configPath provided
+  FlutterImgResolutionOrganizer.withConfigFile(String configPath) {
     config = Config.fromFile(configPath);
   }
 
-  /// Organise image's file according to the setting in the config instance
+  /// [For CLI] Organise image's file according to the setting in the config instance
   int run() {
     int exitCode = 0;
 
@@ -23,19 +41,38 @@ class FlutterImgResolutionOrganizer {
     List<FileSystemEntity> entities = _getFileEntitiesInDirectory(
         config.assetFolderPath, config.fileExtensions);
     for (var entity in entities) {
-      nMovedFile +=
-          _moveFileToItsResolutionFolder(entity, config.fileNameRegExp);
+      nMovedFile += moveFileToItsResolutionFolder(entity);
     }
     print('$nMovedFile file(s) have been arranged.');
 
     return exitCode;
   }
 
+  /// [For CLI] Watch and organise image's file according to the setting in the config instance
+  Future<int> watch() async {
+    int exitCode = 0;
+
+    run();
+    print('Watching...');
+
+    var watcher = DirectoryWatcher(p.absolute(config.assetFolderPath));
+    await for (var event in watcher.events) {
+      if (event.type == ChangeType.ADD || event.type == ChangeType.MODIFY) {
+        var f = File(event.path);
+        if (_shouldMoveThisFile(f)) {
+          moveFileToItsResolutionFolder(f);
+        }
+      }
+    }
+
+    return exitCode;
+  }
+
   /// Move a file to the target folder according to its resolution indicator
-  int _moveFileToItsResolutionFolder(
-      FileSystemEntity entity, RegExp fileNameRegExp) {
+  int moveFileToItsResolutionFolder(FileSystemEntity entity) {
+    var fileNameRegExp = config.fileNameRegExp;
     int nAffectedFile = 0;
-    Match fileNameMatch = fileNameRegExp.firstMatch(basename(entity.path));
+    Match fileNameMatch = fileNameRegExp.firstMatch(p.basename(entity.path));
     if (fileNameMatch != null) {
       // Extract a filename and its resolution
       String fileNameWithExt =
@@ -69,8 +106,14 @@ class FlutterImgResolutionOrganizer {
         .where((el) =>
             el is FileSystemEntity &&
             el is File &&
-            fileExtensionsSet.contains(extension(el.path)))
+            fileExtensionsSet.contains(p.extension(el.path)))
         .toList();
     return entities;
+  }
+
+  /// Return true if this file should be organised
+  bool _shouldMoveThisFile(File file) {
+    var fileExtensionsSet = Set.from(config.fileExtensions);
+    return fileExtensionsSet.contains(p.extension(file.path));
   }
 }
