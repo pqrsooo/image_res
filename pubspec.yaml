@@ -1,6 +1,6 @@
 name: image_res
 description: A Flutter package that organizes image's resolution variants inside your asset's folder.
-version: 0.0.2
+version: 0.0.3
 author: Parinthorn Saithong <parinthorn.sa@gmail.com>
 homepage: https://github.com/pirsquareff/image_res
 
