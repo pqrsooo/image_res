@@ -38,7 +38,7 @@ asset/
 1. Install the `image_res` plugin by adding it in `pubspec.yaml` under `dev_dependencies` section and run `flutter packages get`
     ```yaml
     dev_dependencies: 
-        image_res: ^0.1.0
+        image_res: ^0.0.4
     ```
 2. Create a new configuration file called `image_res.yaml`
     ```yaml
