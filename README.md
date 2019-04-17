@@ -1,6 +1,7 @@
 # Image Res
+[![pub package](https://img.shields.io/pub/v/image_res.svg)](https://pub.dartlang.org/packages/image_res)
 
-A command-line tool which simplifies the task of placing the image's files into appropriate folders based on their resolution. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you place your image assets in a Flutter project and run this plugin. It'll look into all images' filename and automatically move them to their appropriate-resolution folder.
+A command-line tool which simplifies the task of placing image's files into appropriate folders based on their resolution. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you place your image assets in a Flutter project and run this plugin. It'll look into all images' filename and automatically move them to their appropriate-resolution folder.
 
 For example, if you place images in the asset folder as shown below: 
 
@@ -10,7 +11,7 @@ assets/
 |   +-- icons/
 |   |   +-- search.png
 |   |   +-- search@2x.png
-|   |   +-- searcg@2x.png
+|   |   +-- searcg@3x.png
 |   +-- logo.png
 |   +-- logo@2x.png
 |   +-- logo@3x.png
@@ -38,14 +39,14 @@ assets/
 1. Install the `image_res` plugin by adding it in `pubspec.yaml` under `dev_dependencies` section and run `flutter packages get`
     ```yaml
     dev_dependencies: 
-        image_res: ^0.1.0
+        image_res: ^0.1.1
     ```
 2. Create a new configuration file called `image_res.yaml` in the project's root directory
     ```yaml
     # The organizer recursively looks into all files in the `asset_folder_path`. (relative to the project's root)
     asset_folder_path: assets/images/
 
-    # The organizer only arranges files with its extension in the `file_extensions` list.
+    # The organizer only arranges files with their extension listed in the `file_extensions`.
     file_extensions:
         - .jpg
         - .png
@@ -69,11 +70,22 @@ assets/
 
 **Note that** this plugin can be installed globally by `flutter packages pub global activate image_res`. Instead of typing a long command shown above, you can run it by just `imgres`.
 
-If you encounters an issue indicating `dart: command not found`, please install Dart separately first and try running again.
+If you encounter an issue indicating `dart: command not found`, please install Dart separately first and try running again.
 
 ## Available CLI Commands
+
 | Commands | Description |
 | -------- | ----------- |
 | `[blank]` | Run this plugin once |
 | `run` | Run this plugin once |
 | `watch` | Run this plugin and watch for changes |
+
+### Usage
+- If the plugin was installed globally, run it by:
+    ```
+    imgres <command>
+    ```
+- If the plugin was installed locally in a Flutter project, run it by:
+    ```
+    flutter packages pub run image_res:main <command>
+    ```

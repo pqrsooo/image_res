@@ -1,3 +1,7 @@
+## 0.1.1 (17 April 2019)
+- Fix typos in `README.md`
+- Add a Pub badge from shields.io
+
 ## 0.1.0 (17 April 2019)
 - Now this plugin can watch for file changes
 

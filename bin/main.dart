@@ -8,7 +8,7 @@ void main(List<String> args) async {
   if (FileSystemEntity.typeSync(configPath) == FileSystemEntityType.notFound) {
     // `image_res.yaml` does not exist
     print(
-        'There is no `image_res.yaml` in your project\'s root directory. Please consult https://github.com/pirsquareff/img_res for more information regarding the configuration.');
+        'There is no `image_res.yaml` in your project\'s root directory. Please consult https://github.com/pirsquareff/image_res for more information regarding the configuration.');
     exit(2);
   }
 
