@@ -1,4 +1,4 @@
-name: flutter_img_resolution_organizer
+name: image_res
 description: A Flutter package that organizes image's resolution variants inside your asset's folder.
 version: 0.0.1
 author: Parinthorn Saithong <parinthorn.sa@gmail.com>
