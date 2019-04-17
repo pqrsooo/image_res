@@ -1,4 +1,4 @@
-# The organizer recursively looks into all files in the `asset_folder_path`
+# The organizer recursively looks into all files in the `asset_folder_path` (relative to the project's root)
 asset_folder_path: assets/images/
 
 # The organizer only arranges files with its extension in the `file_extensions` list.

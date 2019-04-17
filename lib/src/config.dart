@@ -24,11 +24,10 @@ class Config {
 
   static RegExp resIndRegExp = RegExp('(.*){N}(.*)');
 
-  Config({
-    this.assetFolderPath = DefaultConfig.ASSET_FOLDER_PATH,
-    this.fileExtensions = DefaultConfig.FILE_EXTENSIONS, 
-    this.resolutionIndicator = DefaultConfig.RESOLUTION_INDICATOR
-  }) {
+  Config(
+      {this.assetFolderPath = DefaultConfig.ASSET_FOLDER_PATH,
+      this.fileExtensions = DefaultConfig.FILE_EXTENSIONS,
+      this.resolutionIndicator = DefaultConfig.RESOLUTION_INDICATOR}) {
     _decomposeResolutionIndicator();
     _generateFileNameRegExp();
   }
@@ -36,16 +35,18 @@ class Config {
   Config.fromFile(String filePath) {
     String yamlContent = File(filePath).readAsStringSync();
     YamlMap yamlMap = loadYaml(yamlContent);
-    
-    assetFolderPath = yamlMap['asset_folder_path'] ?? DefaultConfig.ASSET_FOLDER_PATH;
+
+    assetFolderPath =
+        yamlMap['asset_folder_path'] ?? DefaultConfig.ASSET_FOLDER_PATH;
     if (yamlMap['file_extensions'] is YamlList) {
       fileExtensions = _getListFromYamlList(yamlMap['file_extensions']);
     } else {
       fileExtensions = DefaultConfig.FILE_EXTENSIONS;
     }
-    resolutionIndicator = yamlMap['resolution_indicator'] ?? DefaultConfig.RESOLUTION_INDICATOR;
-     _decomposeResolutionIndicator();
-     _generateFileNameRegExp();
+    resolutionIndicator =
+        yamlMap['resolution_indicator'] ?? DefaultConfig.RESOLUTION_INDICATOR;
+    _decomposeResolutionIndicator();
+    _generateFileNameRegExp();
   }
 
   List<String> _getListFromYamlList(YamlList yamlList) {
