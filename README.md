@@ -38,9 +38,9 @@ asset/
 1. Install the `image_res` plugin by adding it in `pubspec.yaml` under `dev_dependencies` section and run `flutter packages get`
     ```yaml
     dev_dependencies: 
-        image_res: ^0.0.4
+        image_res: ^0.0.5
     ```
-2. Create a new configuration file called `image_res.yaml`
+2. Create a new configuration file called `image_res.yaml` in the project's root directory.
     ```yaml
     # The organizer recursively looks into all files in the `asset_folder_path`. (relative to the project's root)
     asset_folder_path: assets/images/
