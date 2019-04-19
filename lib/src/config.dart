@@ -11,12 +11,15 @@ class DefaultConfig {
   ];
 
   static const String RESOLUTION_INDICATOR = '@{N}x';
+
+  static const bool ALLOW_OVERWRITE = false;
 }
 
 class Config {
   String assetFolderPath;
   List<String> fileExtensions;
   String resolutionIndicator;
+  bool allowOverwrite;
 
   String startInd;
   String endInd;
@@ -27,7 +30,8 @@ class Config {
   Config(
       {this.assetFolderPath = DefaultConfig.ASSET_FOLDER_PATH,
       this.fileExtensions = DefaultConfig.FILE_EXTENSIONS,
-      this.resolutionIndicator = DefaultConfig.RESOLUTION_INDICATOR}) {
+      this.resolutionIndicator = DefaultConfig.RESOLUTION_INDICATOR,
+      this.allowOverwrite = DefaultConfig.ALLOW_OVERWRITE}) {
     _decomposeResolutionIndicator();
     _generateFileNameRegExp();
   }
@@ -45,6 +49,9 @@ class Config {
     }
     resolutionIndicator =
         yamlMap['resolution_indicator'] ?? DefaultConfig.RESOLUTION_INDICATOR;
+    allowOverwrite =
+        yamlMap['allow_overwrite'] ?? DefaultConfig.ALLOW_OVERWRITE;
+
     _decomposeResolutionIndicator();
     _generateFileNameRegExp();
   }

@@ -16,3 +16,6 @@ file_extensions:
 #   '@{N}x': logo@2x.png, logo@2.0x.png, @2.0xlogo.png
 #   '--{N}#': logo--2#.png, logo--2.0#.png, --2.0#logo.png
 resolution_indicator: '@{N}x'
+
+# If `allow_overwrite` is true, when there is the same filename already existing in a target folder, the organizer will replace it.
+allow_overwrite: false

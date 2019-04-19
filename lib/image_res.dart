@@ -18,13 +18,15 @@ class FlutterImgResolutionOrganizer {
 
   /// A named constructor that creates an instance with a config
   FlutterImgResolutionOrganizer.withConfig(
-      {var assetFolderPath = DefaultConfig.ASSET_FOLDER_PATH,
-      var fileExtensions = DefaultConfig.FILE_EXTENSIONS,
-      var resolutionIndicator = DefaultConfig.RESOLUTION_INDICATOR}) {
+      {String assetFolderPath = DefaultConfig.ASSET_FOLDER_PATH,
+      List<String> fileExtensions = DefaultConfig.FILE_EXTENSIONS,
+      String resolutionIndicator = DefaultConfig.RESOLUTION_INDICATOR,
+      bool allowOverwrite = DefaultConfig.ALLOW_OVERWRITE}) {
     config = Config(
       assetFolderPath: assetFolderPath,
       fileExtensions: fileExtensions,
       resolutionIndicator: resolutionIndicator,
+      allowOverwrite: allowOverwrite,
     );
   }
 
@@ -59,7 +61,7 @@ class FlutterImgResolutionOrganizer {
     await for (var event in watcher.events) {
       if (event.type == ChangeType.ADD || event.type == ChangeType.MODIFY) {
         var f = File(event.path);
-        if (_shouldMoveThisFile(f)) {
+        if (_matchWithFileExtensions(f)) {
           moveFileToItsResolutionFolder(f);
         }
       }
@@ -84,13 +86,14 @@ class FlutterImgResolutionOrganizer {
       Directory(toDirectory).createSync(recursive: true);
       String toPath = '$toDirectory$fileNameWithExt';
 
-      if (FileSystemEntity.typeSync(toPath) == FileSystemEntityType.notFound) {
+      if (config.allowOverwrite ||
+          FileSystemEntity.typeSync(toPath) == FileSystemEntityType.notFound) {
         entity.renameSync('$toDirectory$fileNameWithExt');
         print('Moved ${entity.path} -> $toDirectory$fileNameWithExt');
         nAffectedFile = 1;
       } else {
         print(
-            '$toDirectory$fileNameWithExt has already existed. Try change the file name.');
+            '$toDirectory$fileNameWithExt has already existed. Try changing the file name.');
       }
     }
     return nAffectedFile;
@@ -100,19 +103,18 @@ class FlutterImgResolutionOrganizer {
   List<FileSystemEntity> _getFileEntitiesInDirectory(
       String directoryPath, List<String> fileExtensions) {
     var dir = Directory(directoryPath);
-    var fileExtensionsSet = Set.from(fileExtensions);
     List entities = dir
         .listSync(recursive: true, followLinks: false)
         .where((el) =>
             el is FileSystemEntity &&
             el is File &&
-            fileExtensionsSet.contains(p.extension(el.path)))
+            _matchWithFileExtensions(el))
         .toList();
     return entities;
   }
 
-  /// Return true if this file should be organised
-  bool _shouldMoveThisFile(File file) {
+  /// Return true if this file should be organised (match with file extensions listed in the configulation)
+  bool _matchWithFileExtensions(File file) {
     var fileExtensionsSet = Set.from(config.fileExtensions);
     return fileExtensionsSet.contains(p.extension(file.path));
   }

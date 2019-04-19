@@ -1,3 +1,7 @@
+## 0.2.0 (19 April 2019)
+- Add an option in `image_res.yaml` to allow overwriting
+- Update `README.md`
+
 ## 0.1.1 (17 April 2019)
 - Fix typos in `README.md`
 - Add a Pub badge from shields.io
