@@ -1,3 +1,6 @@
+## 0.2.1 (20 June 2019)
+- Update version constraint in `pubspec.yaml`
+
 ## 0.2.0 (19 April 2019)
 - Add an option in `image_res.yaml` to allow overwriting
 - Update `README.md`
