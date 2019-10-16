@@ -1,7 +1,7 @@
 # Image Res
 [![pub package](https://img.shields.io/pub/v/image_res.svg)](https://pub.dartlang.org/packages/image_res)
 
-A command-line tool which simplifies the task of placing image's files into appropriate folders based on their resolution. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you place your image assets in a Flutter project and run this plugin. It'll look into all images' filename and automatically move them to appropriate-resolution folders.
+A command-line tool which simplifies a task of placing image files into appropriate folders based on their resolution. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you place your image assets in a Flutter project and run this plugin. It'll look into all images' filename and automatically move them to appropriate-resolution folders.
 
 For example, if you place images in the asset folder as shown below: 
 
@@ -11,7 +11,7 @@ assets/
 |   +-- icons/
 |   |   +-- search.png
 |   |   +-- search@2x.png
-|   |   +-- searcg@3x.png
+|   |   +-- search@3x.png
 |   +-- logo.png
 |   +-- logo@2x.png
 |   +-- logo@3x.png
@@ -39,7 +39,7 @@ assets/
 1. Install the `image_res` plugin by adding it in `pubspec.yaml` under `dev_dependencies` section and run `flutter packages get`
     ```yaml
     dev_dependencies: 
-        image_res: ^0.2.0
+        image_res: ^0.2.2
     ```
 2. Create a new configuration file called `image_res.yaml` in the project's root directory
     ```yaml
@@ -62,7 +62,7 @@ assets/
     #   '--{N}#': logo--2#.png, logo--2.0#.png, --2.0#logo.png
     resolution_indicator: '@{N}x'
 
-    # If `allow_overwrite` is true, when there is the same filename already existing in a target folder, the organizer will replace it.
+    # If `allow_overwrite` is true when there is the same filename already existing in a target folder, the organizer will replace it.
     allow_overwrite: false
 
     ```

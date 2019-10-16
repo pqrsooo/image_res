@@ -1,3 +1,7 @@
+## 0.2.2 (16 October 2019)
+- Update version constraint in `pubspec.yaml`
+- Fix typos in `README.md`
+
 ## 0.2.1 (20 June 2019)
 - Update version constraint in `pubspec.yaml`
 
