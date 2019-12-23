@@ -1,7 +1,7 @@
 # Image Res
 [![pub package](https://img.shields.io/pub/v/image_res.svg)](https://pub.dartlang.org/packages/image_res)
 
-A command-line tool which simplifies a task of placing image files into appropriate folders based on their resolution. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you place your image assets in a Flutter project and run this plugin. It'll look into all images' filename and automatically move them to appropriate-resolution folders.
+A command-line tool which automates a task of grouping image files into appropriate folders based on their resolution indicated in the file name. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you copy and paste your image assets in your Flutter project and run this plugin. It'll look into all images' filename and automatically move them to appropriate-resolution folders.
 
 For example, if you place images in the asset folder as shown below: 
 
