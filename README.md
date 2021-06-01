@@ -3,6 +3,8 @@
 
 A command-line tool which automates a task of grouping image files into appropriate folders based on their resolution indicated in the file name. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you copy and paste your image assets in your Flutter project and run this plugin. It'll look into all images' filename and automatically move them to appropriate-resolution folders.
 
+Now supports null-safety.
+
 For example, if you place images in the asset folder as shown below: 
 
 ```
@@ -39,7 +41,7 @@ assets/
 1. Install the `image_res` plugin by adding it in `pubspec.yaml` under `dev_dependencies` section and run `flutter packages get`
     ```yaml
     dev_dependencies: 
-        image_res: ^0.2.2
+        image_res: ^0.3.0
     ```
 2. Create a new configuration file called `image_res.yaml` in the project's root directory
     ```yaml

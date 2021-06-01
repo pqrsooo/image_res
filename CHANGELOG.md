@@ -1,3 +1,10 @@
+## 0.3.0 (31 May 2021)
+- Update `README.md`
+- Change Dart min sdk to 2.12
+- Change package version to 0.3.0
+- Migrate code to null-safety
+- Upgrade dependencies to latest versions
+
 ## 0.2.3 (23 December 2019)
 - Update `README.md`
 
