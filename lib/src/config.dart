@@ -16,14 +16,14 @@ class DefaultConfig {
 }
 
 class Config {
-  String assetFolderPath;
-  List<String> fileExtensions;
-  String resolutionIndicator;
-  bool allowOverwrite;
+  late String assetFolderPath;
+  late List<String> fileExtensions;
+  late String resolutionIndicator;
+  late bool allowOverwrite;
 
-  String startInd;
-  String endInd;
-  RegExp fileNameRegExp;
+  String? startInd;
+  String? endInd;
+  late RegExp fileNameRegExp;
 
   static RegExp resIndRegExp = RegExp('(.*){N}(.*)');
 
@@ -39,7 +39,6 @@ class Config {
   Config.fromFile(String filePath) {
     String yamlContent = File(filePath).readAsStringSync();
     YamlMap yamlMap = loadYaml(yamlContent);
-
     assetFolderPath =
         yamlMap['asset_folder_path'] ?? DefaultConfig.ASSET_FOLDER_PATH;
     if (yamlMap['file_extensions'] is YamlList) {
@@ -64,9 +63,9 @@ class Config {
   }
 
   void _decomposeResolutionIndicator() {
-    Match resIndMatch = Config.resIndRegExp.firstMatch(resolutionIndicator);
-    startInd = resIndMatch.group(1);
-    endInd = resIndMatch.group(2);
+    final resIndMatch = Config.resIndRegExp.firstMatch(resolutionIndicator);
+    startInd = resIndMatch?.group(1);
+    endInd = resIndMatch?.group(2);
   }
 
   void _generateFileNameRegExp() {

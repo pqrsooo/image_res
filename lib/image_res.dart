@@ -9,7 +9,7 @@ import 'src/config.dart';
 
 class FlutterImgResolutionOrganizer {
   /// A configulation instance
-  Config config;
+  late Config config;
 
   /// A main constructor with a default configuration
   FlutterImgResolutionOrganizer() {
@@ -74,7 +74,7 @@ class FlutterImgResolutionOrganizer {
   int moveFileToItsResolutionFolder(FileSystemEntity entity) {
     var fileNameRegExp = config.fileNameRegExp;
     int nAffectedFile = 0;
-    Match fileNameMatch = fileNameRegExp.firstMatch(p.basename(entity.path));
+    final fileNameMatch = fileNameRegExp.firstMatch(p.basename(entity.path));
     if (fileNameMatch != null) {
       // Extract a filename and its resolution
       String fileNameWithExt =
@@ -103,14 +103,13 @@ class FlutterImgResolutionOrganizer {
   List<FileSystemEntity> _getFileEntitiesInDirectory(
       String directoryPath, List<String> fileExtensions) {
     var dir = Directory(directoryPath);
-    List entities = dir
+    return dir
         .listSync(recursive: true, followLinks: false)
         .where((el) =>
             el is FileSystemEntity &&
             el is File &&
             _matchWithFileExtensions(el))
         .toList();
-    return entities;
   }
 
   /// Return true if this file should be organised (match with file extensions listed in the configulation)
