@@ -20,7 +20,6 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: flutter analyze
-      - run: flutter test
       - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
