@@ -1,4 +1,7 @@
 # Image Res
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![pub package](https://img.shields.io/pub/v/image_res.svg)](https://pub.dartlang.org/packages/image_res)
 
 A command-line tool which automates a task of grouping image files into appropriate folders based on their resolution indicated in the file name. Refer to [`https://flutter.dev/docs/development/ui/assets-and-images#loading-images`](https://flutter.dev/docs/development/ui/assets-and-images#loading-images) for further information regarding how Flutter manages resolution-appropriate images. To put it another way, when you copy and paste your image assets in your Flutter project and run this plugin. It'll look into all images' filename and automatically move them to appropriate-resolution folders.
@@ -94,3 +97,22 @@ If you encounter an issue indicating `dart: command not found`, please install D
     ```sh
     flutter packages pub run image_res:main <command>
     ```
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://roipeker.com"><img src="https://avatars.githubusercontent.com/u/33768711?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Roi Peker</b></sub></a><br /><a href="#maintenance-roipeker" title="Maintenance">🚧</a> <a href="https://github.com/pirsquareff/image_res/commits?author=roipeker" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
