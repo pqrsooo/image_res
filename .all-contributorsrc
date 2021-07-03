@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "roipeker",
+      "name": "Roi Peker",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33768711?v=4",
+      "profile": "https://roipeker.com",
+      "contributions": [
+        "maintenance",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "image_res",
+  "projectOwner": "pirsquareff",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
